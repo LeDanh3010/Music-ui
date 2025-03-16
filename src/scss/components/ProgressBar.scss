@@ -1,0 +1,67 @@
+@use "../abstracts";
+
+// style general progressbar
+.progress-bar,
+.progress-bar::-webkit-slider-runnable-track,
+.progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border-radius: 5px;
+}
+
+.progress-bar {
+  width: 450px;
+  height: fit-content;
+  &::-webkit-slider-runnable-track {
+    height: 4px;
+    background: linear-gradient(to right, #f8f8f8, #f4f7f3),
+      abstracts.$progress-bar;
+    background-size: var(--background-size, 0%) 100%;
+    background-repeat: no-repeat;
+  }
+  &::-webkit-slider-thumb {
+    margin-top: -4px;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+  }
+}
+
+.progress-track {
+  display: flex;
+  align-items: center;
+}
+
+// progress volume
+.progress-bar.volume {
+  width: 100px;
+}
+
+//progress primary
+.progress-wrapper {
+  display: flex;
+  .progress-duration {
+    @include abstracts.font(1.2rem, 600);
+    min-width: 40px;
+    &.left {
+      margin-right: 10px;
+      text-align: right;
+    }
+    &.right {
+      margin-left: 10px;
+      text-align: left;
+    }
+  }
+  &:hover ::-webkit-slider-thumb {
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+  }
+  &:hover ::-webkit-slider-runnable-track {
+    background: linear-gradient(to right, #15a02c, #0ee919),
+      abstracts.$progress-bar;
+    background-size: var(--background-size, 0%) 100%;
+    background-repeat: no-repeat;
+  }
+}

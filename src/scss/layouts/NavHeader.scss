@@ -1,0 +1,133 @@
+@use "../abstracts";
+
+.header {
+  padding: 8px 16px;
+  background-color: rgb(12, 11, 11);
+  // background-color: abstracts.$secondary-background;
+  position: relative;
+  z-index: 1;
+  border-radius: 8px 8px 0 0;
+}
+.header-wrapper {
+  @include abstracts.flex(row, space-between, center);
+  flex-wrap: nowrap;
+  gap: 8px;
+  .icon {
+    color: #fff;
+    font-size: 2rem;
+  }
+  .header-search {
+    width: 100%;
+    margin-right: auto;
+    background-color: #242424;
+    height: 48px;
+    @include abstracts.flex(null, null, center);
+    border-radius: 500px;
+    flex: 0 1 364px;
+    padding-left: 15px;
+    gap: 6px;
+    .header-search_icon {
+      color: hsla(0, 0%, 100%, 0.7);
+      padding-top: 6px;
+    }
+    input {
+      font-size: 1.2rem;
+      width: 100%;
+      flex: 0 1 280px;
+      padding: 5px 2px;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      color: #fff;
+    }
+  }
+  .header-search:focus-within {
+    outline-style: solid;
+    outline-color: #fff;
+    outline-width: 2px;
+  }
+  .header-user {
+    @include abstracts.flex(null, space-around, center);
+    position: relative;
+    gap: 20px;
+    height: 48px;
+    margin-left: auto;
+    a {
+      @include abstracts.flex(null, null, center);
+      @include abstracts.font(1.4rem, 700);
+      height: 100%;
+    }
+    .signUp {
+      color: #b3b3b3;
+      text-align: right;
+      min-width: fit-content;
+      transition: transform 0.1s ease;
+      &:hover {
+        color: #fff;
+        transform: scale(1.1);
+      }
+    }
+    .login {
+      color: #000;
+      padding: 8px 32px;
+      background-color: #fff;
+      border-radius: 30px;
+      min-width: fit-content;
+      transition: transform 0.1s ease;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+//private
+.header-user {
+  .header-private {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1f1f1f;
+    width: 48px;
+    height: 100%;
+    border-radius: 50%;
+    transition: transform 0.2s linear;
+    cursor: pointer;
+    &::before {
+      position: absolute;
+      content: "";
+      inset: 7px;
+      background-color: #b49bc8;
+      border-radius: inherit;
+    }
+    &:hover {
+      transform: scale(1.1);
+    }
+    .header-private-text {
+      color: #000000;
+      z-index: 5;
+      @include abstracts.font(1.5rem, 600);
+    }
+  }
+  .header-private-list {
+    border-radius: 3px;
+    position: absolute;
+    padding: 4px;
+    top: 116%;
+    right: -16px;
+    background-color: abstracts.$third-background;
+    li {
+      width: 150px;
+      height: 42px;
+      padding: 10px;
+    }
+    a {
+      @include abstracts.font(1.4rem, 550);
+    }
+    .divider-line {
+      @include abstracts.divider();
+      margin: 0;
+    }
+  }
+}
